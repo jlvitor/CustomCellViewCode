@@ -48,16 +48,15 @@ class DetailDevViewControllerScreen: UIView {
         image.clipsToBounds = true
         image.contentMode = .scaleAspectFill
         image.layer.cornerRadius = 45
-        image.image = UIImage(named: "steve-jobs")
         return image
     }()
     
     lazy var devLabelName: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 40, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
+        label.textAlignment = .center
         label.textColor = .darkGray
-        label.text = "Steve Jobs"
         return label
     }()
     
@@ -66,7 +65,7 @@ class DetailDevViewControllerScreen: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Descrição"
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
         label.textColor = .black
         return label
     }()
@@ -78,7 +77,6 @@ class DetailDevViewControllerScreen: UIView {
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textColor = .darkGray
         label.numberOfLines = 0
-        label.text = "Apple Inc. é uma empresa multinacional norte-americana que tem o objetivo de projetar e comercializar produtos eletrônicos de consumo, software de computador e computadores pessoais."
         return label
     }()
     
@@ -98,12 +96,6 @@ class DetailDevViewControllerScreen: UIView {
     
     public func configProtocols(delegate: DetailDevViewControllerScreenDelegate) {
         self.delegate = delegate
-    }
-    
-    public func setUpCell(data: DevViewModel) {
-        self.devImage.image = UIImage(named: data.listImage ?? "")
-        self.devLabelName.text = data.listTitle
-        self.descriptionLabelText.text = data.listDescription
     }
     
     private func addElements() {

@@ -11,6 +11,8 @@ class DevDetailViewController: UIViewController {
     
     var screen: DetailDevViewControllerScreen?
     
+    var devModel = DevViewModel()
+    
     override func loadView() {
         self.screen = DetailDevViewControllerScreen()
         self.screen?.configProtocols(delegate: self)
@@ -20,12 +22,14 @@ class DevDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        setUpView()
     }
     
-//    public func setUpCell(data: DevViewModel) {
-//        self.screen?.setUpCell(data: data)
-//    }
-
+    public func setUpView() {
+        self.screen?.devImage.image = UIImage(named: devModel.listImage ?? "")
+        self.screen?.devLabelName.text = devModel.listTitle
+        self.screen?.descriptionLabelText.text = devModel.listDescription
+    }
 }
 
 extension DevDetailViewController: DetailDevViewControllerScreenDelegate {

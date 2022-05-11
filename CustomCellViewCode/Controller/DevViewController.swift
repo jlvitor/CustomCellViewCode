@@ -61,7 +61,9 @@ extension DevViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewController = DevDetailViewController()
-        viewController.modalPresentationStyle = .automatic
+        guard let row = tableView.indexPathForSelectedRow?.row else { return }
+        let view = DevData[row]
+        viewController.devModel = view
         present(viewController, animated: true, completion: nil)
     }
     
